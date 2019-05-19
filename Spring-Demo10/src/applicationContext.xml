@@ -1,21 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:c="http://www.springframework.org/schema/c"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
-        <!--注册bean接口实现-->
-    <bean id="school" class="demo.School">
-        <property name="name" value="清华大学"></property>
-        <property name="adress" value="北京"></property>
+        <!--p命名空间-->
+    <bean id="school" class="demo.School" p:name="清华大学" p:adress="北京">
     </bean>
-    <bean id="myservice" class="demo.SpringTestImpl">
-        <!--<constructor-arg index="0"  value="小三"></constructor-arg>
-        <constructor-arg index="1" value="12"></constructor-arg>
-        <constructor-arg index="2" ref="school"></constructor-arg>-->
-        <!--<constructor-arg  value="小三"></constructor-arg>
-        <constructor-arg  value="12"></constructor-arg>
-        <constructor-arg  ref="school"></constructor-arg>-->
-        <constructor-arg name="name"  value="小三"></constructor-arg>
-        <constructor-arg name="age" value="12"></constructor-arg>
-        <constructor-arg name="school" ref="school"></constructor-arg>
+    <bean id="myservice" class="demo.SpringTestImpl" p:name="小三" p:age="12" p:school-ref="school">
     </bean>
 </beans>

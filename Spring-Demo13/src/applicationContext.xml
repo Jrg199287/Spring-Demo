@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <bean id="schools" class="demo.School" >
+        <property name="name" value="清华大学"></property>
+        <property name="adress" value="北京"></property>
+    </bean>
+    <!--域属性的自动注入-->
+    <!--autowire="byName"会自动查找与实体类的域名属性同名的bean的id-->
+    <bean id="myservice" class="demo.SpringTestImpl" autowire="byName">
+        <property name="schools" >
+            <array>
+                <ref bean="schools"></ref>
+            </array>
+        </property>
+    </bean>
+</beans>

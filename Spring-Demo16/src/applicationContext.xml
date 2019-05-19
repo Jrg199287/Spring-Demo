@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <!--抽离出来的公共属性构建一个抽象bean-->
+    <bean id="baseBean" class="demo.Student" abstract="true">
+        <property name="age" value="#{T(java.lang.Math).random()*50> 25 ? 25 :T(java.lang.Math).random()*50 }"></property>
+        <property name="dress" value="街道"></property>
+    </bean>
+    <!--同类抽象bean-->
+    <bean id="student" parent="baseBean" >
+        <property name="name" value="张三"></property>
+    </bean>
+    <bean id="student1" parent="baseBean" >
+        <property name="name" value="李四"></property>
+    </bean>
+    <bean id="student2" parent="baseBean" >
+        <property name="name" value="王五"></property>
+    </bean>
+    <bean id="student3" parent="baseBean" >
+        <property name="name" value="马六"></property>
+    </bean>
+</beans>
