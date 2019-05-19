@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <!--抽离出来的公共属性构建一个抽象bean-->
+    <bean id="baseBean"  abstract="true">
+        <property name="age" value="#{T(java.lang.Math).random()*50> 25 ? 25 :T(java.lang.Math).random()*50 }"></property>
+        <property name="dress" value="街道"></property>
+    </bean>
+</beans>

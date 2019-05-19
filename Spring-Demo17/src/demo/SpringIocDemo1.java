@@ -24,7 +24,11 @@ public class SpringIocDemo1 {
     @Test
     public void Demo2(){
         //创建容器对象加载spring的配置文件
-        ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext1.xml");
+/*        ApplicationContext context = new ClassPathXmlApplicationContext
+         ("applicationBase.xml","applicationBean.xml");*/
+        //项目配置文件过多时
+        ApplicationContext context = new ClassPathXmlApplicationContext
+                ("application*.xml");
         Student  sprinngTest = (Student) context.getBean("student");
         Student  sprinngTest1 = (Student) context.getBean("student1");
         Student  sprinngTest2 = (Student) context.getBean("student2");
