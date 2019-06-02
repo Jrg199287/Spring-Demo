@@ -32,9 +32,13 @@ public class SpringIocDemo1 {
         //创建容器对象加载spring的配置文件
         ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
         SpringTest  sprinngTest = (SpringTest) context.getBean("myProfex");
+        SpringTest  sprinngTest2 = (SpringTest) context.getBean("myAfefex");
         System.out.println( sprinngTest.doFirst());
         System.out.println( "===================");
         System.out.println( sprinngTest.doSecond());
+        System.out.println( sprinngTest2.doFirst());
+        System.out.println( "===================");
+        System.out.println( sprinngTest2.doSecond());
     }
 
 

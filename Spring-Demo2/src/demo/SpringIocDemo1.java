@@ -39,7 +39,7 @@ public class SpringIocDemo1 {
     @Test
     public void Demo2(){
         SpringIocFactory factory = null;
-        SpringTest sprinngTest = factory.getSpringFactory();
+        SpringTest sprinngTest = factory.getSpring();
         System.out.println( sprinngTest.doSome());
     }
 

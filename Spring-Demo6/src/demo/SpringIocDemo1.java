@@ -18,7 +18,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
  */
 public class SpringIocDemo1 {
     /**
-     *
+     * 一定要是singleton
      * 生命销毁时候一定要关闭容器
      */
     @Test
@@ -26,7 +26,7 @@ public class SpringIocDemo1 {
         //创建容器对象加载spring的配置文件
         ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
         SprinngTest  sprinngTest = (SprinngTest) context.getBean("myservice");
-        System.out.println( sprinngTest.doSome());
+        System.out.println("aaa:"+ sprinngTest.doSome());
         System.out.println( sprinngTest.doSome2());
         ((ClassPathXmlApplicationContext)context).close();
     }

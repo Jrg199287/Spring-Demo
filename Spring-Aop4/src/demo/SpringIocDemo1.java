@@ -17,21 +17,19 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
  * 身无彩凤双飞翼，心有灵犀一点通。
  */
 public class SpringIocDemo1 {
+
+
     /**
-     *
-     * 静态工厂
+     * ClassPathXmlApplicationContext
+     * 会去系统的类目录下找对对应的配置文件
      */
     @Test
-    public void Demo1(){
+    public void Demo2(){
         //创建容器对象加载spring的配置文件
         ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
-        SpringTest sprinngTest = (SpringTest) context.getBean("myservice");
-        SpringTest sprinngTest2 = (SpringTest) context.getBean("myservice2");
-        SpringTest sprinngTest3 = (SpringTest) context.getBean("myservice3");
-        System.out.println( sprinngTest==sprinngTest3);
+        SpringTest  springTest = (SpringTest) context.getBean("myProfex");
+        System.out.println( springTest.doFirst());
     }
-
-
 
 
 }

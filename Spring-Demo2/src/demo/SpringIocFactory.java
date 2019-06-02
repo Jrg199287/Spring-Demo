@@ -16,5 +16,7 @@ public  class SpringIocFactory {
         return  new SpringTestImpl();
     }
 
-
+    public  static SpringTest  getSpring(){
+        return  new SpringTestImpl();
+    }
 }

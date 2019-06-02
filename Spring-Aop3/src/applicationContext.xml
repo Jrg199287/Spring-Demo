@@ -6,16 +6,9 @@
        <bean id="myservice" class="demo.SpringTestImpl"/>
         <!--注册切面-->
        <bean id="myadvice" class="demo.MyMethodThrows"/>
-        <!--注册切面-->
-        <bean id="myafter" class="demo.MyMethodAfterAdvice"/>
         <!--注册代理-->
        <bean id="myProfex" class="org.springframework.aop.framework.ProxyFactoryBean">
             <property name="target" ref="myservice"/>
             <property name="interceptorNames" value="myadvice"/>
-        </bean>
-        <!--注册代理-->
-        <bean id="myAfefex" class="org.springframework.aop.framework.ProxyFactoryBean">
-            <property name="target" ref="myservice"/>
-            <property name="interceptorNames" value="myafter"/>
         </bean>
 </beans>
