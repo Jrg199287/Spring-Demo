@@ -1,4 +1,4 @@
-package demo.demo1;
+package demo;
 
 /**
  * java类简单作用描述
@@ -11,12 +11,13 @@ package demo.demo1;
  * @Version: 1.0
  * 身无彩凤双飞翼，心有灵犀一点通。
  */
-public interface SprinngTest {
-    String doSome();
 
-    String doSome2();
-
-    void doStart();
-
-    void doEnd();
+public class SpringTestImpl implements SprinngTest{
+    public SpringTestImpl(){
+        System.out.println("执行无参构造器");
+    }
+    @Override
+    public String doSome() {
+        return "干了什么事情!!!";
+    }
 }

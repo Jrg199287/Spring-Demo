@@ -2,6 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/Spring-Aop1/Spring-Aop1.iml" filepath="$PROJECT_DIR$/Spring-Aop1/Spring-Aop1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Spring-Aop2/Spring-Aop2.iml" filepath="$PROJECT_DIR$/Spring-Aop2/Spring-Aop2.iml" />
       <module fileurl="file://$PROJECT_DIR$/Spring-Demo.iml" filepath="$PROJECT_DIR$/Spring-Demo.iml" />
       <module fileurl="file://$PROJECT_DIR$/Spring-Demo1/Spring-Demo1.iml" filepath="$PROJECT_DIR$/Spring-Demo1/Spring-Demo1.iml" />
       <module fileurl="file://$PROJECT_DIR$/Spring-Demo10/Spring-Demo10.iml" filepath="$PROJECT_DIR$/Spring-Demo10/Spring-Demo10.iml" />

@@ -1,4 +1,4 @@
-package demo.demo1;
+package demo;
 
 /**
  * java类简单作用描述
@@ -11,6 +11,7 @@ package demo.demo1;
  * @Version: 1.0
  * 身无彩凤双飞翼，心有灵犀一点通。
  */
-public interface SprinngTest {
-    String doSome();
+public interface SpringTest {
+    String doFirst();
+    String doSecond();
 }

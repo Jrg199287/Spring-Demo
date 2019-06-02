@@ -1,4 +1,4 @@
-package demo.demo1;
+package demo;
 
 /**
  * java类简单作用描述
