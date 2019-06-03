@@ -5,7 +5,7 @@
         <!--注册bean接口实现-->
        <bean id="myservice" class="demo.SpringTestImpl"/>
         <!--注册切面-->
-       <bean id="myadvice" class="demo.MyMethodThrows"/>
+       <bean id="myadvice" class="demo.MyMethodInterceptor"/>
         <!--注册代理-->
        <bean id="myProfex" class="org.springframework.aop.framework.ProxyFactoryBean">
             <property name="target" ref="myservice"/>

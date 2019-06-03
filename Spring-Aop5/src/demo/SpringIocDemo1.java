@@ -2,12 +2,8 @@ package demo;
 
 
 import org.junit.Test;
-import org.springframework.beans.factory.BeanFactory;
-import org.springframework.beans.factory.xml.XmlBeanFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-import org.springframework.context.support.FileSystemXmlApplicationContext;
-import org.springframework.core.io.ClassPathResource;
 
 /**
  * java类简单作用描述
@@ -21,20 +17,21 @@ import org.springframework.core.io.ClassPathResource;
  * 身无彩凤双飞翼，心有灵犀一点通。
  */
 public class SpringIocDemo1 {
-
-
     /**
      * ClassPathXmlApplicationContext
      * 会去系统的类目录下找对对应的配置文件
      */
     @Test
-    public void Demo2(){
+    public void Demo2() {
         //创建容器对象加载spring的配置文件
-        ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
-        SpringTest  sprinngTest = (SpringTest) context.getBean("myProfex");
-        System.out.println( "输出结果"+sprinngTest.doFirst());
-        System.out.println( "===================");
-        System.out.println( "输出结果"+sprinngTest.doSecond());
+        ApplicationContext context = new
+        ClassPathXmlApplicationContext("applicationContext.xml");
+        SpringTest  springTest = (SpringTest) context.getBean("myProfex");
+        try {
+            System.out.println( springTest.login("admin","123"));
+        } catch (ExceptionHanld exceptionHanld) {
+            exceptionHanld.printStackTrace();
+        }
     }
 
 

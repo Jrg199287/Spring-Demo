@@ -16,12 +16,12 @@ public class SpringTestImpl implements SpringTest {
     @Override
     public String doFirst() {
         System.out.println("执行方法");
-        return null;
+        return "执行了前置";
     }
 
     @Override
     public String doSecond() {
         System.out.println("执行方法");
-        return null;
+        return "执行了后置";
     }
 }

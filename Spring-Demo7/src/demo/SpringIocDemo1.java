@@ -27,7 +27,7 @@ public class SpringIocDemo1 {
         ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
         SprinngTest  sprinngTest = (SprinngTest) context.getBean("myservice");
         System.out.println( sprinngTest.doSome());
-        System.out.println( sprinngTest.doSome2());
+//        System.out.println( sprinngTest.doSome2());
         ((ClassPathXmlApplicationContext)context).close();
     }
 
