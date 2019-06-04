@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+        <!--注册bean接口实现-->
+       <bean id="myservice" class="demo.SpringTestImpl"/>
+        <!--注册切面:前置通知-->
+       <bean id="myadvice" class="demo.MyMethodBeforeAdvice"/>
+        <!--注册切面:后置通知-->
+        <bean id="myafter" class="demo.MyMethodAfterAdvice"/>
+        <!--注册切面:顾问-->
+      <!--  <bean id="myAdvisor" class="org.springframework.aop.support.NameMatchMethodPointcutAdvisor">
+            <property name="advice" ref="myadvice"/>
+           &lt;!&ndash; <property name="mappedNames" value="doFirst,doSecond"/>&ndash;&gt;
+            <property name="mappedNames" value="*ir*"/>
+        </bean>-->
+        <!--正则表达式-->
+        <bean id="myAdvisor" class="org.springframework.aop.support.RegexpMethodPointcutAdvisor">
+            <property name="advice" ref="myadvice"/>
+           <!--这里正则标识的是权限定性方法名-->
+            <!--<property name="pattern" value=".*doFirst"/>-->
+            <property name="patterns" value=".*doFirst,.*doSecond"/>
+        </bean>
+        <!--注册代理-->
+       <bean id="myProfex"
+             class="org.springframework.aop.framework.ProxyFactoryBean">
+            <property name="target" ref="myservice"/>
+            <property name="interceptorNames" value="myAdvisor"/>
+            <property name="proxyTargetClass" value="true"/>
+        </bean>
+        <!--存在的问题
+        1.如果需要注册多个目标对象的代理就需要多个ProxyFactoryBean，这就使得配置文件臃肿
+        2.用户真正想调用的是目标对象而不是代理对象
+        -->
+</beans>
