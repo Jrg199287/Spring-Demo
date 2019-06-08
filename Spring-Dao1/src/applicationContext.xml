@@ -1,21 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xmlns:aop="http://www.springframework.org/schema/aop" xsi:schemaLocation="
-        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-        http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
-    <!--注册目标对象-->
-    <bean id="myService" class="demo.SpringTestImpl"/>
-    <!--注册切面-->
-    <bean id="myAspect" class="demo.MyAspect"/>
-    <aop:config>
-        <aop:pointcut id="first" expression="execution(* *..SpringTest.doThird(..))"/>
-        <aop:aspect ref="myAspect">
-            <aop:before method="before" pointcut="execution(* *..SpringTest.doFirst(..))"/>
-            <aop:after-returning method="after" pointcut="execution(* *..SpringTest.doFirst(..))" returning="result"/>
-            <aop:around method="around" pointcut="execution(* *..SpringTest.doSecond(..))"/>
-            <aop:after-throwing method="exception" pointcut="execution(* *..SpringTest.doThird(..))" throwing="ex"/>
-            <aop:after method="after3" pointcut-ref="first"/>
-        </aop:aspect>
-    </aop:config>
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!--注册数据源--><!--默认数据源-->
+   <!-- <bean id="datasource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="com.mysql.cj.jdbc.Driver"/>
+        <property name="url" value="jdbc:mysql://localhost:3306/mysql?haracterEncoding=gbk"/>
+        <property name="username" value="root"/>
+        <property name="password" value="123456"/>
+    </bean>-->
+    <!--dbcp-->
+  <!--  <bean id="datasource" class="org.apache.commons.dbcp.BasicDataSource">
+        <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+        <property name="url" value="jdbc:mysql://localhost:3306/mysql"/>
+        <property name="username" value="root"/>
+        <property name="password" value=""/>
+    </bean>-->
+    <!--c3p0-->
+    <bean id="datasource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+       <property name="driverClass" value="${jdbc.driver}"/>
+        <property name="jdbcUrl" value="${jdbc.url}"/>
+        <property name="user" value="${jdbc.user}"/>
+        <property name="password" value="${jdbc.password}"/>
+    </bean>
+    <!--配置文件的读取两种方式-->
+    <!--<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="location" value="classpath: datasource.properties"/>
+    </bean>-->
+    <context:property-placeholder location="classpath:datasource.properties"/>
+    <!--注册jdbc模板-->
+    <bean id="jdbc" class="org.springframework.jdbc.core.JdbcTemplate">
+        <property name="dataSource" ref="datasource"/>
+    </bean>
+    <!--注册dao-->
+    <bean id="studentDao" class="demo.dao.StudentDaoImpl">
+        <property name="jdbcTemplate" ref="jdbc"/>
+    </bean>
+    <!--注册service-->
+    <bean id="studentService" class="demo.service.StudentServiceImpl">
+        <property name="dao" ref="studentDao"/>
+    </bean>
+
 </beans>
