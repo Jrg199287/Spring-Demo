@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop" xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+    <!--注册目标对象-->
+    <bean id="myService" class="demo.SpringTestImpl"/>
+    <!--注册切面-->
+    <bean id="myAspect" class="demo.MyAspect"/>
+    <aop:config>
+        <aop:pointcut id="first" expression="execution(* *..SpringTest.doThird(..))"/>
+        <aop:aspect ref="myAspect">
+            <aop:before method="before" pointcut="execution(* *..SpringTest.doFirst(..))"/>
+            <aop:after-returning method="after" pointcut="execution(* *..SpringTest.doFirst(..))" returning="result"/>
+            <aop:around method="around" pointcut="execution(* *..SpringTest.doSecond(..))"/>
+            <aop:after-throwing method="exception" pointcut="execution(* *..SpringTest.doThird(..))" throwing="ex"/>
+            <aop:after method="after3" pointcut-ref="first"/>
+        </aop:aspect>
+    </aop:config>
+</beans>
