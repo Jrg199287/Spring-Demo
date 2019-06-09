@@ -20,8 +20,8 @@ public interface IStudentService {
     int  removeById(Integer id);
     int update(Student student);
     List<Student> queryStudents();
-    Student queryById(String id);
+    Student queryById(int id);
     List<String> queryNames();
-    String queryNameById(String id);
+    String queryNameById(int id);
 
 }

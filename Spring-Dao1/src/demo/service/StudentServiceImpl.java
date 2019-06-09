@@ -41,7 +41,7 @@ public class StudentServiceImpl implements IStudentService{
     }
 
     @Override
-    public Student queryById(String id) {
+    public Student queryById(int id) {
         return dao.selectById(id);
     }
 
@@ -51,7 +51,7 @@ public class StudentServiceImpl implements IStudentService{
     }
 
     @Override
-    public String queryNameById(String id) {
+    public String queryNameById(int id) {
         return dao.selectNameById(id);
     }
 

@@ -8,6 +8,8 @@ import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import java.util.List;
+
 /**
  * java类简单作用描述
  *
@@ -28,7 +30,7 @@ public class test {
     }
     @Test
     public void demo1(){
-        Student student = new Student("张三",20,90,0);
+        Student student = new Student("测试1",20,90,0);
         sprinngTest.add(student);
     }
     @Test
@@ -37,8 +39,20 @@ public class test {
     }
     @Test
     public void demo3(){
-        Student student = new Student("张三",20,90,0);
-        student.setId(2);
+        Student student = new Student("222",20,90,0);
+        student.setId(3);
         sprinngTest.update(student);
+    }
+    @Test
+    public void demo4(){
+        List<String> result =  sprinngTest.queryNames();
+        System.out.println(result);
+    }
+    @Test
+    public void demo5(){
+        List<Student> result =sprinngTest.queryStudents();
+        for ( Student student: result) {
+            System.out.println(student);
+        }
     }
 }

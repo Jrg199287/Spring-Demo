@@ -24,6 +24,11 @@ public class Student {
         this.score = score;
         this.sex = sex;
     }
+
+    public Student() {
+
+    }
+
     public String getName() {
         return name;
     }

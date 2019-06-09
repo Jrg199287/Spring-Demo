@@ -16,7 +16,7 @@ import java.util.List;
  * @Version: 1.0
  * 身无彩凤双飞翼，心有灵犀一点通。
  */
-public class StudentDaoImpl extends JdbcDaoSupport implements StudentMapper{
+public class StudentDaoImpl extends JdbcDaoSupport implements StudentDao {
     @Override
     public int insert(Student student) {
         String sql="insert into student (name,age,score,sex) values(?,?,?,?)";
@@ -33,28 +33,36 @@ public class StudentDaoImpl extends JdbcDaoSupport implements StudentMapper{
 
     @Override
     public int update(Student student) {
-        String sql = "update student set (name,age,score,sex) values(?,?,?,?) where id = ?";
-        int result = this.getJdbcTemplate().update(sql,student.getName(),student.getAge(),student.getScore(),student.getSex(),student.getId());
-        return 0;
+        String sql = "update student set name=? where id = ?";
+        int result = this.getJdbcTemplate().update(sql,student.getName(),student.getId());
+        return result;
     }
 
     @Override
     public List<Student> selectStudents() {
-        return null;
-    }
+        String sql = "select * from student";
+        List<Student> result = this.getJdbcTemplate().query(sql,new StudentRowMaper());
+        return result;
+}
 
     @Override
-    public Student selectById(String id) {
-        return null;
+    public Student selectById(int id) {
+        String sql = "select * from student where id = ?";
+        Student result = this.getJdbcTemplate().queryForObject(sql,new StudentRowMaper(),id);
+        return result;
     }
 
     @Override
     public List<String> selectNames() {
-        return null;
+        String sql = "select name from student";
+        List<String> result = this.getJdbcTemplate().queryForList(sql,String.class);
+        return result;
     }
 
     @Override
-    public String selectNameById(String id) {
-        return null;
+    public String selectNameById(int id) {
+        String sql = "select name from student where id = ?";
+        String result = this.getJdbcTemplate().queryForObject(sql,String.class,id);
+        return result;
     }
 }

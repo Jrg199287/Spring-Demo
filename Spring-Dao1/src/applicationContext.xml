@@ -33,13 +33,13 @@
         <property name="location" value="classpath: datasource.properties"/>
     </bean>-->
     <context:property-placeholder location="classpath:datasource.properties"/>
-    <!--注册jdbc模板-->
+   <!-- &lt;!&ndash;注册jdbc模板&ndash;&gt;
     <bean id="jdbc" class="org.springframework.jdbc.core.JdbcTemplate">
         <property name="dataSource" ref="datasource"/>
-    </bean>
+    </bean>-->
     <!--注册dao-->
     <bean id="studentDao" class="demo.dao.StudentDaoImpl">
-        <property name="jdbcTemplate" ref="jdbc"/>
+        <property name="dataSource" ref="datasource"/>
     </bean>
     <!--注册service-->
     <bean id="studentService" class="demo.service.StudentServiceImpl">
