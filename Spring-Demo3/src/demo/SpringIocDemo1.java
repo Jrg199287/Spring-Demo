@@ -27,8 +27,9 @@ public class SpringIocDemo1 {
         ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
         SpringTest sprinngTest = (SpringTest) context.getBean("myservice");
         SpringTest sprinngTest2 = (SpringTest) context.getBean("myservice2");
+        SpringTest sprinngTest4 = (SpringTest) context.getBean("myservice3");
         SpringTest sprinngTest3 = (SpringTest) context.getBean("myservice3");
-        System.out.println( sprinngTest==sprinngTest3);
+        System.out.println( sprinngTest3==sprinngTest4);
     }
 
 

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+        <!--注册bean接口实现-->
+       <bean id="myservice" class="demo.SpringTestImpl"/>
+        <!--注册切面:前置通知-->
+       <bean id="myadvice" class="demo.MyMethodBeforeAdvice"/>
+        <!--注册切面:后置通知-->
+        <bean id="myafter" class="demo.MyMethodAfterAdvice"/>
+        <!--注册切面:顾问-->
+        <!--正则表达式-->
+        <bean id="myAdvisor" class="org.springframework.aop.support.RegexpMethodPointcutAdvisor">
+            <property name="advice" ref="myadvice"/>
+           <!--这里正则标识的是权限定性方法名-->
+            <!--<property name="pattern" value=".*doFirst"/>-->
+            <property name="patterns" value=".*doFirst,.*doSecond"/>
+        </bean>
+        <!--注册自动代理生成器-->
+       <bean class="org.springframework.aop.framework.autoproxy.BeanNameAutoProxyCreator">
+           <property name="beanNames" value="myservice"/><!--可以选择目标对象-->
+           <property name="interceptorNames" value="myAdvisor"/><!--可以选择注册的切面还可以选择注册的顾问-->
+       </bean>
+</beans>

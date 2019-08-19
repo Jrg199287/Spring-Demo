@@ -1,5 +1,7 @@
 package demo;
 
+import org.springframework.stereotype.Component;
+
 /**
  * java类简单作用描述
  *
@@ -11,7 +13,7 @@ package demo;
  * @Version: 1.0
  * 身无彩凤双飞翼，心有灵犀一点通。
  */
-
+@Component
 public class SpringTestImpl implements SpringTest {
     @Override
     public String doFirst() {

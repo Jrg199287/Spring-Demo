@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+        <!--c命名空间-->
+    <bean id="school" class="demo.School" >
+        <property name="name" value="清华大学"></property>
+        <property name="adress" value="北京"></property>
+    </bean>
+    <bean id="school2" class="demo.School" >
+        <property name="name" value="牛津大学"></property>
+        <property name="adress" value="伦敦"></property>
+    </bean>
+    <bean id="myservice" class="demo.SpringTestImpl" >
+        <property name="schools" >
+            <array>
+                <ref bean="school"></ref>
+                <ref bean="school2"></ref>
+            </array>
+        </property>
+        <property name="msg" >
+            <array>
+                <value>中国</value>
+                <value>美国</value>
+            </array>
+        </property>
+        <property name="lists" >
+            <list>
+                <value>北京</value>
+                <value>纽约</value>
+            </list>
+        </property>
+        <property name="sets" >
+            <set>
+                <value>丰台</value>
+                <value>市区</value>
+            </set>
+        </property>
+        <property name="maps" >
+            <map>
+                <entry key="iphone" value="000000"></entry>
+                <entry key="mobile" value="11111111111"></entry>
+            </map>
+        </property>
+        <property name="properties" >
+            <props>
+                <prop key="name">张三</prop>
+                <prop key="work">java</prop>
+            </props>
+        </property>
+
+    </bean>
+</beans>

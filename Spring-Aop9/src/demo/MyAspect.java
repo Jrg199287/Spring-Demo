@@ -3,12 +3,14 @@ package demo;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.*;
+import org.springframework.stereotype.Component;
 
 /**
  * java类简单作用描述
  * 身无彩凤双飞翼，心有灵犀一点通。
  */
 @Aspect //表示当前类为切面
+@Component
 public class MyAspect {
     /*前置方法*/
     @Before("execution(* *..SpringTest.doFirst(..))")

@@ -8,7 +8,6 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.context.support.FileSystemXmlApplicationContext;
 import org.springframework.core.io.ClassPathResource;
-
 /**
  * java类简单作用描述
  *
@@ -20,6 +19,7 @@ import org.springframework.core.io.ClassPathResource;
  * @Version: 1.0
  * 身无彩凤双飞翼，心有灵犀一点通。
  */
+
 public class SpringIocDemo1 {
     SprinngTest sprinngTest ;
 

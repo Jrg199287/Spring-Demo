@@ -32,14 +32,14 @@ import javax.annotation.Resource;
 public class SpringTestImpl {
     //第一种方式
    /* //域属性注入的两种注解
-    @Autowired  //byType的方式自动注入
+    @Autowired  //默认byType的方式自动注入
     private School schools;*/
    //第二种方式
-    @Autowired
+    @Autowired(required = false)
     @Qualifier("student") //byName的方式自动注入要@Autowired和@Qualifier("student")两个注解同时存在
     private Student students;
     //第三种方式
-    /*@Resource(name = "school")  //Resource的方式自动注入==byName
+    /*@Resource(name = "school")  //Resource的方式默认是以自动注入==byName
     private School schools;*/
     //第四种方式
     @Resource  //Resource的方式自动注入==byType

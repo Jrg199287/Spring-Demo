@@ -1,5 +1,6 @@
 package demo;
 
+import org.junit.jupiter.api.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -15,7 +16,8 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
  * 身无彩凤双飞翼，心有灵犀一点通。
  */
 public class test {
-    public static void main(String[] args) {
+    @Test
+    public  void ssst() {
         ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
         SpringTest  sprinngTest = (SpringTest) context.getBean("myService");
         System.out.println( "输出结果"+sprinngTest.doFirst());

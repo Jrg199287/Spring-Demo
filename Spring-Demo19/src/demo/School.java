@@ -3,6 +3,7 @@ package demo;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
 /**
  * java类简单作用描述
@@ -16,7 +17,7 @@ import org.springframework.stereotype.Component;
  * 身无彩凤双飞翼，心有灵犀一点通。
  */
 
-@Component(value = "school")
+@Repository
 public class School {
     @Value("北京大学")
     private String name;

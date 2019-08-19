@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <!--使用内部bean注入-->
+    <bean id="myservice" class="demo.SpringTestImpl" autowire="byType">
+        <property name="schools">
+            <bean id="school" class="demo.School" >
+                <property name="name" value="清华大学"></property>
+                <property name="adress" value="北京"></property>
+            </bean>
+        </property>
+        <property name="students">
+            <bean id="student" class="demo.Student" >
+                <property name="name" value="张三"></property>
+                <property name="age" value="#{T(java.lang.Math).random()*50> 25 ? 25 :T(java.lang.Math).random()*50 }"></property>
+                <property name="dress" value="街道"></property>
+            </bean>
+        </property>
+    </bean>
+</beans>

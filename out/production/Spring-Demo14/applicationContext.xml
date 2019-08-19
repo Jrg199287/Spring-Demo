@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <bean id="school" class="demo.School" >
+        <property name="name" value="清华大学"></property>
+        <property name="adress" value="北京"></property>
+    </bean>
+    <!--spel注入演示-->
+    <bean id="student" class="demo.Student" >
+        <property name="name" value="#{school.name}"></property>
+        <property name="age" value="#{T(java.lang.Math).random()*50> 25 ? 25 :T(java.lang.Math).random()*50 }"></property>
+       <property name="dress" value="#{school.initAdress()}"></property>
+
+    </bean>
+    <!--这里用到了autowire="byType"而且用到了ref="school"的简写形式特别要注意 每个实体bean初始化时候的is-a关系不能一个实体同时初始化两次；
+    而且简写形式ref不可以使用逗号写多个超过两个只能写在下一级的配置中-->
+    <bean id="myservice" class="demo.SpringTestImpl" autowire="byType">
+        <property name="schools" ref="school"/>
+        <property name="students" ref="student"/>
+    </bean>
+</beans>
